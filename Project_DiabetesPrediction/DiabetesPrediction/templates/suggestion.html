@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Suggestion</title>
+    <style>
+        /* Style for container */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://static.vecteezy.com/system/resources/thumbnails/017/398/144/small/healthcare-services-annual-health-checkup-heart-rate-pulse-measurement-pills-antibiotics-dna-diseases-genes-illustration-on-light-blue-hexagonal-background-health-and-medicine-concept-vector.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 100px auto;
+            padding: 20px;
+            color: black;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        /* Style for boxes */
+        .home-box, .about-box, .bmi-box, .prediction-box {
+            position: fixed;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            z-index: 9999;
+        }
+        .home-box {
+            top: 20px;
+            left: 20px;
+        }
+        .about-box {
+            top: 20px;
+            right: 20px;
+        }
+        .bmi-box {
+            top: 20px;
+            right: calc(125px + 20px);
+        }
+        .prediction-box {
+            top: 20px;
+            left: 150px;
+        }
+        /* Other styles */
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .home-icon {
+            font-size: 24px;
+            margin-right: 5px;
+        }
+        .container h2 {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .container ul {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Home box -->
+    <div class="home-box">
+        <span class="home-icon">🏠</span>
+        <a href="{% url 'home' %}"><strong>Home</strong></a>
+    </div>
+
+    <!-- Prediction box -->
+    <div class="prediction-box">
+        <span class="home-icon">🔮</span>
+        <a href="{% url 'predict' %}"><strong>Diabetes Prediction</strong></a>
+    </div>
+
+    <!-- BMI box -->
+    <div class="bmi-box">
+        <span class="home-icon">&#128290;</span>
+        <a href="{% url 'bmi' %}"><strong>BMI Calculator</strong></a>
+    </div>
+
+    <!-- About box -->
+    <div class="about-box">
+        <span class="home-icon">❓</span>
+        <a href="{% url 'about' %}"><strong>About</strong></a>
+    </div>
+
+    <div class="container">
+        <!-- Insert the description here -->
+        <h2>Understanding Type 2 Diabetes: A Comprehensive Guide</h2>
+        <p><strong>Type 2 diabetes</strong> is a chronic condition that affects how your body processes blood sugar (glucose). Normally, insulin, a hormone produced by the pancreas, helps regulate glucose levels in the bloodstream, allowing cells to use it for energy. However, in type 2 diabetes, the body either doesn't produce enough insulin or becomes resistant to its effects, leading to elevated blood sugar levels.</p>
+
+        <h2>Avoiding Type 2 Diabetes:</h2>
+        <ul>
+            <li><strong>Maintaining a Healthy Weight:</strong> Excess body fat, particularly around the abdomen, increases the risk of developing diabetes. Focus on balanced nutrition and regular exercise to achieve and maintain a healthy weight.</li>
+            <li><strong>Healthy Eating:</strong> Emphasize whole foods such as fruits, vegetables, whole grains, and lean proteins while limiting processed foods, sugars, and saturated fats.</li>
+            <li><strong>Regular Physical Activity:</strong> Engage in at least 150 minutes of moderate aerobic activity or 75 minutes of vigorous activity per week, coupled with muscle-strengthening exercises.</li>
+            <li><strong>Routine Checkups:</strong> Regular medical checkups allow for early detection and intervention if diabetes risk factors are identified.</li>
+        </ul>
+
+        <h2>Key Risk Factors and Symptoms:</h2>
+        <ul>
+            <li><strong>Family History:</strong> Genetics play a significant role in diabetes risk.</li>
+            <li><strong>Obesity or Overweight:</strong> Being overweight, especially with excess abdominal fat, heightens the risk.</li>
+            <li><strong>Sedentary Lifestyle:</strong> Lack of physical activity increases susceptibility.</li>
+            <li><strong>Age:</strong> Risk increases with age, especially after 45.</li>
+            <li><strong>Ethnicity:</strong> Certain ethnic groups, such as African Americans, Hispanics, Native Americans, and Asian Americans, have a higher risk.</li>
+        </ul>
+
+        <p><strong>Common symptoms</strong> of type 2 diabetes include increased thirst, frequent urination, unexplained weight loss, fatigue, blurred vision, and slow wound healing.</p>
+
+        <h2>Risks of Untreated Diabetes:</h2>
+        <ul>
+            <li><strong>Cardiovascular Disease:</strong> Diabetes significantly increases the risk of heart disease, stroke, and other cardiovascular conditions.</li>
+            <li><strong>Nerve Damage (Neuropathy):</strong> Persistent high blood sugar levels can damage nerves throughout the body, leading to pain, numbness, and tingling sensations, especially in the extremities.</li>
+            <li><strong>Kidney Damage (Nephropathy):</strong> Diabetes is a leading cause of kidney failure, as it damages the small blood vessels in the kidneys over time.</li>
+            <li><strong>Vision Problems:</strong> Diabetes can cause diabetic retinopathy, leading to vision loss or blindness if left untreated.</li>
+            <li><strong>Foot Complications:</strong> Poor circulation and nerve damage can increase the risk of foot ulcers, infections, and, in severe cases, amputation.</li>
+        </ul>
+
+        <h2>Management and Treatment:</h2>
+        <ul>
+            <li><strong>Blood Sugar Monitoring:</strong> Regularly checking blood sugar levels helps track the effectiveness of treatment and identify patterns.</li>
+            <li><strong>Healthy Lifestyle:</strong> Continuing or adopting healthy habits, including diet, exercise, and weight management, is crucial.</li>
+            <li><strong>Medication:</strong> Some individuals may require oral medications or insulin injections to help manage blood sugar levels effectively.</li>
+            <li><strong>Regular Medical Care:</strong> Ongoing medical supervision, including routine checkups and screenings for complications, is essential for maintaining health and preventing complications.</li>
+        </ul>
+
+        <h2>Conclusion:</h2>
+        <p>While type 2 diabetes poses significant challenges, it is manageable with proper lifestyle changes, medication, and medical care. By understanding the risk factors, symptoms, and potential complications, individuals can take proactive steps to prevent or effectively manage diabetes, leading to a healthier and more fulfilling life.</p>
+    </div>
+    <a href="{% url 'home' %}" class="back-to-home" style="font-weight: bold;">Go back to the home page</a>
+</body>
+</html>

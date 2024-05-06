@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About | Diabetes Prediction for Doctors</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('https://static.vecteezy.com/system/resources/thumbnails/017/398/144/small/healthcare-services-annual-health-checkup-heart-rate-pulse-measurement-pills-antibiotics-dna-diseases-genes-illustration-on-light-blue-hexagonal-background-health-and-medicine-concept-vector.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #000; /* Black text color */
+        }
+
+        .content-container {
+            max-width: 800px;
+            margin: 200px auto;
+            margin-top: 100px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            text-align: justify; /* Center align text */
+        }
+
+        h1, h2 {
+            color: #000; /* Black text color */
+        }
+
+        ul {
+            margin-left: 20px;
+            text-align: left; /* Left align text */
+        }
+
+        .images {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .images img {
+            width: 45%;
+            border-radius: 5px;
+        }
+
+        .images img:hover {
+            transform: scale(1.1); /* Enlarge image on hover */
+        }
+
+        @media (max-width: 600px) {
+            .images {
+                flex-direction: column;
+            }
+
+            .images img {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+
+        /* Home box */
+        .home-box {
+            position: fixed;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            z-index: 9999; /* Ensure the box appears above other content */
+            top: 20px;
+            left: 20px;
+        }
+
+        .home-box a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .home-icon {
+            font-size: 24px;
+            margin-right: 5px;
+        }
+
+        /* Diabetes Prediction box */
+        .prediction-box {
+            position: fixed;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            z-index: 9999; /* Ensure the box appears above other content */
+            top: 20px;
+            left: 150px; /* Adjusted the left position */
+        }
+
+        .prediction-box a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        /* BMI box */
+        .bmi-box {
+            position: fixed;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            z-index: 9999; /* Ensure the box appears above other content */
+            top: 20px;
+            right: 20px; /* Positioned at the top right corner */
+        }
+
+        .bmi-box a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        /* Suggestion box */
+        .suggestion-box {
+            position: fixed;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            z-index: 9999; /* Ensure the box appears above other content */
+            top: 20px;
+            right: 215px; /* Adjusted the right position */
+        }
+
+        .suggestion-box a {
+            color: #007bff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Home box -->
+    <div class="home-box">
+        <span class="home-icon">🏠</span>
+        <a href="{% url 'home' %}"><strong>Home</strong></a>
+    </div>
+
+    <!-- Diabetes Prediction box -->
+    <div class="prediction-box">
+        <span class="home-icon">🔮</span>
+        <a href="{% url 'predict' %}"><strong>Diabetes Prediction</strong></a>
+    </div>
+
+    <!-- BMI box -->
+    <div class="bmi-box">
+        <a href="{% url 'bmi' %}" class="bmi-box">
+            <span class="home-icon">&#128290;</span>
+            <strong>BMI Calculator</strong>
+        </a>
+    </div>
+
+    <!-- Suggestion box -->
+    <div class="suggestion-box">
+        <a href="{% url 'suggestion' %}" class="suggestion-box">
+            <span class="home-icon">💡</span>
+            <strong>Suggestion</strong>
+        </a>
+    </div>
+
+    <div class="content-container">
+        <h1>Empowering Doctors with Early Diabetes Prediction</h1>
+
+        <p>
+            This website is designed to be a valuable tool for medical professionals like you,
+            helping you identify patients at risk for developing diabetes.
+            Our advanced prediction model analyzes various patient factors and provides
+            insights into their susceptibility to the condition.
+            With this information, you can take proactive measures:
+        </p>
+
+        <ul>
+            <li>Implement preventative strategies for high-risk patients.</li>
+            <li>Tailor treatment plans for patients with potential pre-diabetes.</li>
+            <li>Focus early interventions to improve patient outcomes.</li>
+        </ul>
+
+        <p>
+            By leveraging the power of this diabetes prediction tool, you can play a crucial role
+            in promoting better patient health and well-being.
+        </p>
+
+        <div class="images">
+            <img src="https://img.freepik.com/free-vector/doctor-nurse-study-discuss-xray-patient-lung-image-man-pulmonologist-woman-therapist-assistant-examine-fluorography-result-disease-determination_575670-456.jpg" alt="Doctor reviewing data">
+        </div>
+
+        <h2>Contact Us</h2>
+
+        <p>
+            We are here to support you! For any questions or inquiries about this
+            website or the prediction model, please don't hesitate to contact us:
+        </p>
+
+        <ul>
+            <li>Email: contact@diabetesprediction.com</li>
+            <li>Phone: (555) 555-5555</li>
+        </ul>
+    </div>
+    <a href="{% url 'home' %}" class="back-to-home" style="font-weight: bold;">Go back to the home page</a>
+</body>
+</html>

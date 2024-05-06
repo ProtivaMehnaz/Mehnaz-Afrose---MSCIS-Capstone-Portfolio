@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        /* Global styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://static.vecteezy.com/system/resources/thumbnails/017/398/144/small/healthcare-services-annual-health-checkup-heart-rate-pulse-measurement-pills-antibiotics-dna-diseases-genes-illustration-on-light-blue-hexagonal-background-health-and-medicine-concept-vector.jpg'); /* Update the file name */
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 100px auto;
+            padding: 20px;
+            color: black; /* Text color */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 15px; /* Smaller font size */
+            line-height: 1.5;
+            margin-bottom: 20px;
+            color: #555; /* Darker color */
+            text-align: center; /* Center alignment */
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a.big-link {
+            font-size: 16px; /* Bigger font size */
+            font-weight: bold;
+        }
+        /* Style for home, about, and BMI boxes */
+        .home-box, .about-box, .bmi-box, .prediction-box, .suggestion-box {
+            position: fixed;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            z-index: 9999; /* Ensure the boxes appear above other content */
+        }
+        .home-box {
+            top: 20px;
+            left: 20px;
+        }
+        .about-box {
+            top: 20px;
+            right: 20px;
+        }
+        .bmi-box {
+            top: 20px;
+            right: calc(290px + 20px); /* Adjusted the right position */
+        }
+        .prediction-box {
+            top: 20px;
+            left: 150px; /* Adjusted the left position */
+        }
+        .suggestion-box {
+            top: 20px;
+            right: calc(100px + 40px); /* Adjusted the right position */
+        }
+        .home-box a, .about-box a, .bmi-box a, .prediction-box a, .suggestion-box a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .home-icon {
+            font-size: 24px;
+            margin-right: 5px;
+        }
+        /* Image container styles */
+        .image-container {
+            display: flex;
+            justify-content: space-between; /* Distribute space between images */
+            margin-bottom: 20px;
+        }
+        .image-container img {
+            max-width: 40%; /* Set maximum width for each image */
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Home box -->
+    <div class="home-box">
+        <span class="home-icon">🏠</span>
+        <a href="#"><strong>Home</strong></a>
+    </div>
+
+    <!-- Prediction box -->
+    <div class="prediction-box">
+        <span class="home-icon">🔮</span>
+        <a href="{% url 'predict' %}"><strong>Diabetes Prediction</strong></a>
+    </div>
+
+    <!-- BMI box -->
+    <div class="bmi-box">
+        <span class="home-icon">&#128290;</span>
+        <a href="{% url 'bmi' %}"><strong>BMI Calculator</strong></a>
+    </div>
+
+    <!-- Suggestion box -->
+    <div class="suggestion-box">
+        <span class="home-icon">💡</span>
+        <a href="{% url 'suggestion' %}"><strong>Suggestion</strong></a>
+    </div>
+
+    <!-- About box -->
+    <div class="about-box">
+        <span class="home-icon">❓</span>
+        <a href="{% url 'about' %}"><strong>About</strong></a>
+    </div>
+
+    <div class="container">
+        <h1>Predicting Diabetes: Empowering Physicians</h1>
+        <p>Discover your patient's health by understanding the risk of Type 2 diabetes. Our quick questionnaire will unlock personalized insights into your patient's health and lifestyle choices.</p>
+        <div class="image-container">
+            <img src="https://www.pathologyasia.com/wp-content/uploads/Diabetes-Overview-1-768x768.png" alt="Diabetes Image">
+            <img src="https://d2jx2rerrg6sh3.cloudfront.net/images/Article_Images/ImageForArticle_975_16981278236522842.png" alt="Healthy Eating Image">
+        </div>
+        <p><a href="{% url 'predict' %}" class="big-link"><strong>Click here to continue</strong></a></p>
+    </div>
+
+</body>
+</html>

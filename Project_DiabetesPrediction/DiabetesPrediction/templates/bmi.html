@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-image: url('https://static.vecteezy.com/system/resources/thumbnails/017/398/144/small/healthcare-services-annual-health-checkup-heart-rate-pulse-measurement-pills-antibiotics-dna-diseases-genes-illustration-on-light-blue-hexagonal-background-health-and-medicine-concept-vector.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            margin-top: 100px;
+            padding: 10px;
+            color: black; /* Text color */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            background-color: rgba(255, 255, 255, 0.3); /* Transparent white background */
+        }
+
+        .calculator {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+            /*margin-top: 100px;*/
+        }
+
+        .calculator label {
+            margin-bottom: 5px;
+        }
+
+        .calculator input,
+        .calculator button {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .result {
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .chart-container {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 20px;
+        }
+
+        .bmi-chart {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .bmi-chart div {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .underweight {
+            background-color: #f99;
+        }
+
+        .healthy {
+            background-color: #90ee90;
+        }
+
+        .overweight {
+            background-color: #ffcc99;
+        }
+
+        .obese {
+            background-color: #ff6666;
+        }
+
+        .description-container {
+            max-width: 1000px; /* Adjusted max-width */
+            margin: 10px auto;
+            padding: 10px; /* Reduced padding */
+            background-color: rgba(255, 255, 255, 0.3); /* Transparent white background */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .description {
+            font-size: 0.9rem; /* Adjusted font size */
+            color: #333; /* Deeper color */
+        }
+
+        .description h2 {
+            font-weight: bold; /* Bold headings */
+        }
+
+        .description ul {
+            list-style-type: disc; /* Bullet list */
+            margin-left: 20px; /* Adjust margin */
+        }
+
+        .description p {
+            text-align: left; /* Align text left */
+        }
+
+        /* Home box */
+        .home-box {
+            position: fixed;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            z-index: 9999; /* Ensure the box appears above other content */
+            top: 20px;
+            left: 20px;
+        }
+
+        .home-box a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .home-icon {
+            font-size: 24px;
+            margin-right: 5px;
+        }
+
+        /* About box */
+        .about-box {
+            position: fixed;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            z-index: 9999; /* Ensure the box appears above other content */
+            top: 20px;
+            right: 20px;
+        }
+
+        .about-box a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        /* Prediction box */
+        .prediction-box {
+            position: fixed;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            z-index: 9999; /* Ensure the box appears above other content */
+            top: 20px;
+            left: 150px; /* Adjusted the left position */
+        }
+
+        .prediction-box a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        /* Suggestion box */
+        .suggestion-box {
+            position: fixed;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            z-index: 9999; /* Ensure the box appears above other content */
+            top: 20px;
+            right: 150px; /* Adjusted the right position */
+        }
+
+        .suggestion-box a {
+            color: #007bff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Suggestion box -->
+    <div class="suggestion-box">
+        <a href="{% url 'suggestion' %}" class="suggestion-box">
+            <span class="home-icon">💡</span>
+            <strong>Suggestion</strong>
+        </a>
+    </div>
+
+    <!-- Home box -->
+    <div class="home-box">
+        <span class="home-icon">🏠</span>
+        <a href="{% url 'home' %}"><strong>Home</strong></a>
+    </div>
+
+    <!-- About box -->
+    <div class="about-box">
+        <a href="{% url 'about' %}" class="about-box">
+            <span class="home-icon">❓</span>
+            <strong>About</strong>
+        </a>
+    </div>
+
+    <!-- Prediction box -->
+    <div class="prediction-box">
+        <a href="{% url 'predict' %}" class="prediction-box">
+            <span class="home-icon">🔮</span>
+            <strong>Diabetes Prediction</strong>
+        </a>
+    </div>
+
+    <div class="container">
+        <h1>BMI Calculator</h1>
+        <div class="calculator">
+            <label for="height">Height (meters):</label>
+            <input type="number" id="height" name="height" step="0.01">
+            <label for="weight">Weight (kg):</label>
+            <input type="number" id="weight" name="weight" step="0.1">
+            <button onclick="calculateBMI()">Calculate BMI</button>
+        </div>
+        <div class="result" id="result"></div>
+        <div class="chart-container">
+            <h2>BMI Chart</h2>
+            <div class="bmi-chart">
+                <div class="underweight">Underweight (< 18.5)</div>
+                <div class="healthy">Healthy Weight (18.5 - 24.9)</div>
+                <div class="overweight">Overweight (25 - 29.9)</div>
+                <div class="obese">Obese (30 or greater)</div>
+            </div>
+        </div>
+    </div> <!-- Closing .container -->
+    <div class="description-container">
+        <div class="description">
+
+            <h2>Body Mass Index (BMI)</h2>
+            <p>Body Mass Index (BMI) is a simple tool that helps you understand if your weight falls within a healthy range for your height. It's calculated by dividing your weight in kilograms by the square of your height in meters. While BMI isn't perfect (it doesn't account for muscle mass vs. fat), it's a valuable starting point for assessing your weight and potential health risks.</p>
+
+            <h2>The Link Between BMI and Diabetes:</h2>
+            <ul>
+                <li>Excess weight puts stress on your body: Carrying extra weight, particularly around your belly, can lead to insulin resistance. Insulin is a hormone that helps your body use glucose (sugar) for energy. When you're insulin resistant, your cells become less efficient at absorbing glucose, leading to high blood sugar levels – a hallmark of diabetes.</li>
+                <li>Increased risk of Type 2 Diabetes: Studies consistently show a strong correlation between higher BMI and a greater risk of developing type 2 diabetes, the most common form of diabetes. </li>
+                <li>Prevention is Key: Maintaining a healthy weight through a balanced diet and regular exercise significantly reduces your risk of developing type 2 diabetes. Even modest weight loss (5-10% of body weight) can improve insulin sensitivity and blood sugar control.</li>
+            </ul>
+
+            <h2>Beyond Diabetes: Additional Benefits of a Healthy BMI:</h2>
+            <ul>
+                <li>Improved overall health: A healthy weight reduces stress on your joints, heart, and other vital organs.</li>
+                <li>Increased energy levels: When you're at a healthy weight, you have more energy for daily activities.</li>
+                <li>Enhanced self-esteem: Feeling good about your weight can positively impact your overall well-being.</li>
+            </ul>
+
+            <h2>Taking Action for a Healthy Weight:</h2>
+            <ul>
+                <li>Consult your doctor: Discuss your weight concerns and create a personalized plan for healthy weight loss. </li>
+                <li>Embrace a balanced diet: Focus on whole foods like fruits, vegetables, and whole grains while limiting processed foods and sugary drinks.</li>
+                <li>Incorporate regular exercise: Aim for at least 150 minutes of moderate-intensity exercise per week.</li>
+            </ul>
+            <p>Remember, maintaining a healthy weight is a journey, not a destination. By understanding your BMI and taking steps towards a healthier lifestyle, you can significantly reduce your risk of diabetes and improve your overall health.</p>
+        </div>
+    </div> <!-- Closing .description-container -->
+    <script>
+        function calculateBMI() {
+          const height = parseFloat(document.getElementById("height").value);
+          const weight = parseFloat(document.getElementById("weight").value);
+
+          if (height > 0 && weight > 0) {
+            const bmi = weight / (height * height);
+            const resultDiv = document.getElementById("result");
+
+            let message;
+            if (bmi < 18.5) {
+              message = "Your BMI is " + bmi.toFixed(2) + ". You are underweight.";
+            } else if (bmi >= 18.5 && bmi <= 24.9) {
+              message = "Your BMI is " + bmi.toFixed(2) + ". You are in a healthy weight range.";
+            } else if (bmi >= 25 && bmi <= 29.9) {
+              message = "Your BMI is " + bmi.toFixed(2) + ". You are overweight.";
+            } else {
+              message = "Your BMI is " + bmi.toFixed(2) + ". You are obese.";
+            }
+
+            resultDiv.textContent = message;
+          } else {
+            alert("Please enter valid height and weight values.");
+          }
+        }
+    </script>
+    <a href="{% url 'home' %}" class="back-to-home" style="font-weight: bold;">Go back to the home page</a>
+</body>
+</html>

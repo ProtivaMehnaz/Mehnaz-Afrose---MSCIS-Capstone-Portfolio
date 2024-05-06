@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prediction page</title>
+    <style>
+        body {
+            background-image: url("https://slidescorner.com/wp-content/uploads/2022/11/01-Drake-Healthcare-and-Medical-Free-PPT-Background-by-SlidesCorner.com_.jpg");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        .main {
+            position: fixed;
+            top: 140px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 550px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            align-items: center;
+            padding: 5%;
+        }
+
+        h1 {
+            color: #0086b3;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        input[type=submit] {
+            background-color: #4dc3ff;
+            border: 2px;
+            color: white;
+            padding: 8px 16px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        .back-to-home {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            font-size: 16px;
+            color: #007bff;
+            text-decoration: none;
+        }
+        .doctor-suggestion-link {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        /* Home and About boxes styles */
+        .home-box, .about-box, .bmi-box, .suggestion-box {
+            position: fixed;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            z-index: 9999;
+        }
+        .home-box {
+            top: 20px;
+            left: 20px;
+        }
+        .about-box {
+            top: 20px;
+            right: 20px;
+        }
+        .bmi-box {
+            top: 20px;
+            right: 320px;
+        }
+        .suggestion-box {
+            top: 20px;
+            right: 150px; /* Adjusted the right position */
+        }
+        .home-box a, .about-box a, .bmi-box a, .suggestion-box a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .home-icon {
+            font-size: 24px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+<!-- Home box -->
+<div class="home-box">
+        <span class="home-icon">🏠</span>
+        <a href="{% url 'home' %}"><strong>Home</strong></a>
+    </div>
+
+<!-- About box -->
+<div class="about-box">
+        <span class="home-icon">❓</span>
+        <a href="{% url 'about' %}"><strong>About</strong></a>
+</div>
+
+<!-- BMI box -->
+<div class="bmi-box">
+    <span class="home-icon">&#128290;</span>
+    <a href="{% url 'bmi' %}"><strong>BMI Calculator</strong></a>
+</div>
+
+<!-- Suggestion box -->
+<div class="suggestion-box">
+    <a href="{% url 'suggestion' %}" class="suggestion-box">
+        <span class="home-icon">💡</span>
+        <strong>Suggestion</strong>
+    </a>
+</div>
+
+<!-- Main content container -->
+<div align='center' class="main">
+    <h1>Please enter the following information:</h1>
+    <form action="result">
+        <!-- Input fields and dropdowns for user input -->
+        <table>
+            <!-- Gender dropdown -->
+            <tr>
+                <td align="right">Gender:</td>
+                <td align="left">
+                    <select name="n1">
+                        <option value="0">Male</option>
+                        <option value="1">Female</option>
+                        <option value="2">Other</option>
+                    </select>
+                </td>
+            </tr>
+
+            <!-- Age input field -->
+            <tr>
+                <td align="right">Age:</td>
+                <td align="left"> <input type="text" name="n2"></td>
+            </tr>
+
+            <!-- Hypertension dropdown -->
+            <tr>
+                <td align="right">Hypertension:</td>
+                <td align="left">
+                    <select name="n3">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </td>
+            </tr>
+
+            <!-- Heart disease dropdown -->
+            <tr>
+                <td align="right">Heart disease:</td>
+                <td align="left">
+                    <select name="n4">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </td>
+            </tr>
+
+            <!-- Smoking history dropdown -->
+            <tr>
+                <td align="right">Smoking history:</td>
+                <td align="left">
+                    <select name="n5">
+                        <option value="0">Never</option>
+                        <option value="1">No Info</option>
+                        <option value="2">Current</option>
+                        <option value="3">Former</option>
+                        <option value="4">Ever</option>
+                        <option value="5">Not current</option>
+                    </select>
+                </td>
+            </tr>
+
+            <!-- Height input field -->
+            <tr>
+                <td align="right">Height(in meter):</td>
+                <td align="left"> <input type="text" name="height" oninput="calculateBMI()">
+                </td>
+            </tr>
+
+            <!-- Weight input field -->
+            <tr>
+                <td align="right">Weight(in kg):</td>
+                <td align="left"> <input type="text" name="weight" oninput="calculateBMI()">
+                </td>
+            </tr>
+
+            <!-- HbA1c level input field -->
+            <tr>
+                <td align="right">HbA1c_level:</td>
+                <td align="left"> <input type="text" name="n7"></td>
+            </tr>
+
+            <!-- Blood glucose level input field -->
+            <tr>
+                <td align="right">Blood glucose level:</td>
+                <td align="left"> <input type="text" name="n8"></td>
+            </tr>
+        </table>
+        <!-- Submit button -->
+        <input type="submit">
+    </form>
+    <!-- Displaying the result -->
+    Result: {{result2}}
+</div>
+
+<!-- Back to home link -->
+<a href="{% url 'home' %}" class="back-to-home" style="font-weight: bold;">Go back to the home page</a>
+</body>
+</html>
